@@ -1,0 +1,29 @@
+ul.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #444;
+}
+
+li.menu {
+  float: right;
+  border-left:2px solid #bbb;
+}
+li.menu:last-child {
+  border-left: none;
+}
+
+li.menu a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Gill Sans;
+  font-size: 20;
+}
+
+li.menu a:hover, a:focus, a.active {
+  background-color: #222;
+}
