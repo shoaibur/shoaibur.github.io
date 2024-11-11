@@ -1,13 +1,22 @@
+<!DOCTYPE html>
 <html>
-<h1>Machine Learning Model</h1>
-<a href="#linear-regression"> Linear Regression </a>
-<a href="#knn"> Linear Regression </a>
+<head>
+    <title>Machine Learning Models</title>
+</head>
+<body>
+    <h1>Machine Learning Models</h1>
+    <nav>
+        <a href="#linear-regression">Linear Regression</a>
+        <a href="#knn">K-Nearest Neighbors</a>
+    </nav>
+    
+    <section id="linear-regression">
+        <h2>Linear Regression</h2>
+        <pre><code>
+import numpy as np
 
-<section id="linear-regression">
-  Linear Regression
-  <code>
-    class LinearRegression:
-    def __init__(self, lr=0.1, it=10):
+class LinearRegression:
+    def __init__(self, lr=0.1, it=100):
         self.lr = lr
         self.it = it
         self.costs = []
@@ -18,26 +27,31 @@
         b = 0
         for _ in range(self.it):
             y_hat = np.dot(Xtr, W) + b
-            self.costs.append(1/m * np.sum((y_hat - ytr) ** 2))
-            dw = -(2/m) * np.dot(Xtr.T, (ytr - y_hat))
-            db = -(2/m) * np.sum(ytr - y_hat)
+            cost = (1/m) * np.sum((y_hat - ytr) ** 2)
+            self.costs.append(cost)
+            dw = (-2/m) * np.dot(Xtr.T, (ytr - y_hat))
+            db = (-2/m) * np.sum(ytr - y_hat)
             W -= self.lr * dw
             b -= self.lr * db
         self.W = W
         self.b = b
     
     def predict(self, Xts):
-        y_pred = np.dot(Xts, self.W) + self.b
-        return y_pred
+        return np.dot(Xts, self.W) + self.b
 
+# Example usage
+if __name__ == "__main__":
     Xtr = np.random.rand(15, 3)
     ytr = np.random.rand(15, 1)
-    
     Xts = np.random.rand(5, 3)
     
-    model = LinearRegression()
+    model = LinearRegression(lr=0.01, it=1000)
     model.train(Xtr, ytr)
-    print(model.predict(Xts))
-  </code>
-</section>
+    predictions = model.predict(Xts)
+    print("Predictions:", predictions)
+        </code></pre>
+    </section>
+    
+    <!-- You can add the KNN section similarly -->
+</body>
 </html>
